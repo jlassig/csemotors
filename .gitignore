@@ -13,4 +13,10 @@ node_modules
 .env
 
 # .DS_Store is only for Mac users
-**/.DS_Store
+# **/.DS_Store
+
+#the Readme. meh. Just leave it alone.
+README.md
+
+#do NOT send the yaml up to gitup. And do NOT touch it. ¡No lo toques!
+pnpm-lock.yaml
