@@ -8,6 +8,10 @@
   --accent: 79, 173, 207;
 }
 
+h1, h2{
+  font-family: var(--heading-font);
+}
+
 .top-header {
   display: flex;
   flex-direction: row;
@@ -47,23 +51,39 @@ nav ul {
   font-weight: bold;
 }
 figure {
+  /* position: relative; */
+  /* margin-left: 100px; */
+  display: flex;
+}
+figure img{
+  flex: 0 0 auto;
   position: relative;
+  z-index: 0;
 }
 figcaption {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
+  /* position: absolute; */
+  /* top: 0;
+  left: -80px;
+  z-index: 1; */
   background-color: rgba(var(--accent), 0.8);
+  flex: 1 1 auto;
+  margin-right: -40px;
+  z-index: 1;
 }
 .fig-button {
+  margin: auto;
   background-color: var(--primary);
   text-align: center;
   padding: 5px;
+  width: 80%;
 }
 .fig-button a {
   color: var(--secondary);
   text-decoration: none;
+}
+
+.reviews{
+  font-family: var(--paragraph-font);
 }
 
 /* upgrade grid section */
@@ -83,8 +103,9 @@ figcaption {
 .upgrade-img-div {
   background-color: rgba(var(--accent));
   width: 100%;
-  height: 100px;
+  height: 90px;
   position: relative;
+  border: 2px solid var(--primary);
 }
 .upgrade-img-div img {
   margin: 0;
@@ -98,6 +119,7 @@ figcaption {
   text-align: center;
   padding-bottom: 10px;
 }
+
 
 /******* Change Box Model ***************/
 *,
