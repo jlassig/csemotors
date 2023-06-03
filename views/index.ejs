@@ -1,20 +1,31 @@
-<body>
-  <h1>Welcome to CSE Motors!</h1>
+<h1>Welcome to CSE Motors!</h1>
 
-  <figure>
-    <figcaption>
-      <h2>DMC Delorean</h2>
-      <ul class="extra-info-ul">
-        <li>3 Cup holders</li>
-        <li>Superman doors</li>
-        <li>Fuzzy dice!</li>
-      </ul>
-      <div class="fig-button"><a href="" target="blank">Own Today</a></div>
-    </figcaption>
-    <img src="/images/vehicles/delorean-tn.jpg" alt="Delorean car" />
-  </figure>
+<div class="hero">
+  <div class="info-box">
+    <h2>DMC Delorean</h2>
+    <ul class="extra-info-ul">
+      <li>3 Cup holders</li>
+      <li>Superman doors</li>
+      <li>Fuzzy dice!</li>
+    </ul>
+    <div class="info-button"><a href="" target="blank">Own Today</a></div>
+  </div>
+  <picture class="car-img">
+    <source
+      srcset="/images/vehicles/delorean.jpg"
+      media="(min-width: 800px)"
+      width="500"
+      height="255" />
+    <img
+      src="/images/vehicles/delorean-tn.jpg"
+      alt="Delorean car"
+      width="200"
+      height="102" />
+  </picture>
+</div>
 
-  <section class="review-section">
+<div class="reviews-n-upgrades">
+  <div class="review-div">
     <h2>DMC Delorean Reviews</h2>
     <ul class="reviews">
       <li>"So fast it's almost like traveling in time." (4/5)</li>
@@ -23,9 +34,9 @@
       <li>"The most futuristic ride of our day." (4.5/5)</li>
       <li>"80's livin and I love it!" (5/5)</li>
     </ul>
-  </section>
+  </div>
 
-  <section class="upgrade-section">
+  <div class="upgrade-section-div">
     <h2>Delorean Upgrades</h2>
     <div class="upgrade-div">
       <div class="upgrade-img-div">
@@ -70,5 +81,5 @@
       </div>
       <a href="" target="blank">Hub Caps</a>
     </div>
-  </section>
-</body>
+  </div>
+</div>
