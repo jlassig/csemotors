@@ -1,5 +1,5 @@
 /* ******************************************
- * This server.js file is the primary file of the 
+ * This server.js file is the primary file of the
  * application. It is used to control the project.
  *******************************************/
 /* ***********************
@@ -21,8 +21,8 @@ app.set("layout", "./layouts/layout")
  *************************/
 app.use(require("./routes/static"))
 //Index route:
-app.get("/", function(req, res){
-  res.render("index", {title: "Home"})
+app.get("/", function (req, res) {
+  res.render("index", { title: "Home" })
 })
 
 /* ***********************

@@ -129,7 +129,7 @@ nav ul {
 } */
 
 @media only screen and (min-width: 800px) {
-  .wrapper{
+  .wrapper {
     background-image: url("/images/site/small_check.jpg");
     background-size: cover;
     background-position: center;
@@ -146,22 +146,23 @@ nav ul {
   }
   nav {
     background-color: var(--primary);
-    padding: 0, 5px;
   }
 
-  nav, main, header{
+  nav,
+  main,
+  header {
     border-bottom: none;
   }
 
-  nav, footer, main{
+  nav,
+  footer,
+  main {
     border-top: none;
   }
-  header{
+  header {
     padding-top: 20px;
     padding-bottom: 20px;
   }
-
-
 
   .reviews-n-upgrades {
     display: grid;
