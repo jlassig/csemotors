@@ -35,7 +35,7 @@ h2 {
 
 nav {
   background-color: var(--primary);
-  color: var(--secondary);
+  
 }
 nav ul {
   display: flex;
@@ -45,6 +45,25 @@ nav ul {
   list-style: none;
   padding: 10px;
 }
+
+nav ul li a{
+    color: var(--secondary);
+    text-decoration: none;
+
+}
+nav ul li a:visited{
+  color: var(--secondary);
+}
+
+nav ul li a:hover{
+  background-color: var(--secondary);
+  color: var(--primary);
+}
+
+
+
+
+
 
 .extra-info-ul {
   list-style: none;
@@ -121,6 +140,9 @@ nav ul {
   padding-bottom: 10px;
 }
 
+
+
+
 /******* Change Box Model ***************/
 /* *,
 *:before,
@@ -159,6 +181,13 @@ nav ul {
   main {
     border-top: none;
   }
+
+  nav ul li a{
+    padding: 15px;
+}
+
+
+  
   header {
     padding-top: 20px;
     padding-bottom: 20px;
@@ -178,4 +207,20 @@ nav ul {
   .upgrade-section-div {
     padding: 1em;
   }
+
+
+  /* grid on car pages */
+.inv-display{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  
+
+}}
+
+@media only screen and (min-width: 1200px){
+.inv-display{
+    grid-template-columns: repeat(3,1fr);
+}
+
+
 }
