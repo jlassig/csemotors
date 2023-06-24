@@ -166,7 +166,7 @@ nav ul li a:hover{
 }
 
 
-/* error message 404 */
+/* error message 404 and 500 */
 .error-image{
   display: block;
   margin: auto;
@@ -181,6 +181,7 @@ nav ul li a:hover{
   color: rgba(var(--accent));
   text-align: center;
   padding: 1em;
+  background-color: black;
 }
 .error-heading{
   text-align:center;
@@ -234,6 +235,7 @@ nav ul li a:hover{
     background-image: url("/images/site/small_check.jpg");
     background-size: cover;
     background-position: center;
+    height: 100vh;
   }
   main,
   header,
