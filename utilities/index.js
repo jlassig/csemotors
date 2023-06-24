@@ -57,14 +57,14 @@ Util.buildClassificationGrid = async function (data) {
         vehicle.inv_make +
         " " +
         vehicle.inv_model +
-        ' details">' +
+        ' details" class="inv-link">' +
         vehicle.inv_make +
         " " +
         vehicle.inv_model +
         "</a>"
       grid += "</h2>"
       grid +=
-        "<span>$" +
+        "<span class='inv-price'>$" +
         new Intl.NumberFormat("en-US").format(vehicle.inv_price) +
         "</span>"
       grid += "</div>"
@@ -75,6 +75,46 @@ Util.buildClassificationGrid = async function (data) {
     grid += '<p class="notice">Sorry, no matching vehicles could be found.</p>'
   }
   return grid
+}
+
+Util.buildVehicleInfo = async function (data) {
+  let infoPage = '<div id="info-wrapper" class="info-wrapper">'
+  if (data.length > 0) {
+    infoPage +=
+      '<img class="individual-image" src="' +
+      data[0].inv_image +
+      '" alt="Image of ' +
+      data[0].inv_make +
+      " " +
+      data[0].inv_model +
+      '"/>'
+
+    infoPage += '<div class="details">'
+    infoPage +=
+      "<h2>" + data[0].inv_make + " " + data[0].inv_model + " Details:</h2>"
+    infoPage += "<ul>"
+    infoPage +=
+      '<li> <span class="boldme">Price:</span> $' +
+      new Intl.NumberFormat("en-US").format(data[0].inv_price) +
+      "</li>"
+    infoPage +=
+      '<li> <span class="boldme">Description:</span> ' +
+      data[0].inv_description +
+      "</li>"
+    infoPage +=
+      '<li> <span class="boldme">Miles:</span> ' +
+      new Intl.NumberFormat("en-US").format(data[0].inv_miles) +
+      "</li>"
+    infoPage +=
+      '<li> <span class="boldme">Color:</span> ' + data[0].inv_color + "</li>"
+
+    infoPage += "</ul></div>"
+  } else {
+    infoPage +=
+      '<p class="notice">Sorry, no matching vehicle could be found.</p>'
+  }
+  infoPage += "</div>"
+  return infoPage
 }
 
 /* ****************************************

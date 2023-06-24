@@ -8,10 +8,13 @@
 const express = require("express")
 const expressLayouts = require("express-ejs-layouts")
 const env = require("dotenv").config()
+const path = require("path")  ///so I can serve up static images? for the crash image for the 404 screen.
 const app = express()
 const baseController = require("./controllers/baseController")
 const inventoryRoute = require("./routes/inventoryRoute")
 const utilities = require("./utilities/")
+
+
 
 /* ***********************
  * View Engine and Templates
@@ -19,20 +22,20 @@ const utilities = require("./utilities/")
 app.set("view engine", "ejs")
 app.use(expressLayouts)
 app.set("layout", "./layouts/layout")
+app.use(express.static(path.join(__dirname, "public")));   // <--here is where i tell the path to use the "public" folder (this is for that ONE image for the 404 error screen!)
 /* ***********************
  * Routes
  *************************/
 app.use(require("./routes/static"))
 //Index route:
-app.use("/inv", inventoryRoute)
+app.use("/inv", utilities.handleErrors(inventoryRoute))
 app.get("/", utilities.handleErrors(baseController.buildHome))
 
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
   next({
     status: 404,
-    message:
-      "The tall man glares at you and angrily barks, 'Nothing to see here. Move along.' <br><br>Which of course makes you wonder what is really here, hidden deep beneath the surface of all the code? What is he trying to hide? You and I both know he is not to be trusted. You slyly click on another link before he has a chance to realize that you know he is lying.",
+    message: "Oh no! There was a crash. Maybe try a different route?",
   })
 })
 

@@ -9,7 +9,7 @@
 }
 
 h1,
-h2 {
+h2, h3 {
   font-family: var(--heading-font);
 }
 
@@ -59,10 +59,6 @@ nav ul li a:hover{
   background-color: var(--secondary);
   color: var(--primary);
 }
-
-
-
-
 
 
 .extra-info-ul {
@@ -140,8 +136,91 @@ nav ul li a:hover{
   padding-bottom: 10px;
 }
 
+/* individual car page */
+.boldme{
+  font-weight: bold;
+}
+.details ul li{
+  font-family: var(--paragraph-font);
+    list-style: none;
+  padding: 1em;
+}
+.details ul li:nth-child(odd){
+  background-color: rgba(0,0,0,0.1);
+}
+
+.details h2{
+  text-align: center;
+}
+.details{
+  border: 2px solid rgba(var(--accent));
+}
+.info-wrapper{
+  padding: 1em;
+}
+
+.individual-image{
+  width: 100%;
+  height: auto;
+  max-width: 500px;
+}
 
 
+/* error message 404 */
+.error-image{
+  display: block;
+  margin: auto;
+  width: 80%;
+  height: auto;
+  max-width: 440px;
+}
+.error-message{
+  font-family: var(--heading-font);
+  font-size: 1.5em;
+  font-weight: bold;
+  color: rgba(var(--accent));
+  text-align: center;
+  padding: 1em;
+}
+.error-heading{
+  text-align:center;
+  font-size: 2em;
+}
+/* classification page grid */
+
+.inv-display{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+.inv-display > *{
+  padding: 2em;
+  list-style: none;
+  width: 100%;
+  margin-top: 1em;
+  text-align: center;
+  border-bottom: 3px solid rgba(var(--accent));
+  
+}
+
+.inv-display img{
+  display: block;
+  margin: auto;
+}
+.inv-price{
+  font-size: 1.3em;
+  font-family: var(--paragraph-font);
+}
+.inv-link{
+  font-size: .9em;
+  font-family: var(--heading-font);
+  color: black;
+  text-decoration: none;
+}
+.inv-link:visited{
+  color: black;
+}
 
 /******* Change Box Model ***************/
 /* *,
@@ -209,17 +288,42 @@ nav ul li a:hover{
   }
 
 
-  /* grid on car pages */
+  /* grid on classification pages */
 .inv-display{
-  display: grid;
-  grid-template-columns: repeat(2,1fr);
-  
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly center;
+}
 
-}}
+.inv-display >*{
+  width: 250px;
+  height: 250px;
+  border: 3px solid rgba(var(--accent));
+  border-radius: 25px;
+  margin: 1em;
+}
+/* grid on individual car page */
+.info-wrapper{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1em;
+  place-items: center;
+}
+
+
+
+
+
+
+}
+
+
+
 
 @media only screen and (min-width: 1200px){
 .inv-display{
-    grid-template-columns: repeat(3,1fr);
+    /* grid-template-columns: repeat(3,1fr); */
+    flex-direction: row;
 }
 
 
