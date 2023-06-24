@@ -9,7 +9,8 @@
 }
 
 h1,
-h2, h3 {
+h2,
+h3 {
   font-family: var(--heading-font);
 }
 
@@ -35,7 +36,6 @@ h2, h3 {
 
 nav {
   background-color: var(--primary);
-  
 }
 nav ul {
   display: flex;
@@ -46,20 +46,18 @@ nav ul {
   padding: 10px;
 }
 
-nav ul li a{
-    color: var(--secondary);
-    text-decoration: none;
-
+nav ul li a {
+  color: var(--secondary);
+  text-decoration: none;
 }
-nav ul li a:visited{
+nav ul li a:visited {
   color: var(--secondary);
 }
 
-nav ul li a:hover{
+nav ul li a:hover {
   background-color: var(--secondary);
   color: var(--primary);
 }
-
 
 .extra-info-ul {
   list-style: none;
@@ -103,17 +101,16 @@ nav ul li a:hover{
 }
 
 /* upgrade grid section */
-
 .upgrade-section-div {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
-  /* border: 2px solid var(--primary); */
+
 }
 
 .upgrade-section-div h2 {
   grid-column: 1/3;
-  /* text-align: center; */
+
 }
 
 .upgrade-img-div {
@@ -137,44 +134,43 @@ nav ul li a:hover{
 }
 
 /* individual car page */
-.boldme{
+.boldme {
   font-weight: bold;
 }
-.details ul li{
+.details ul li {
   font-family: var(--paragraph-font);
-    list-style: none;
+  list-style: none;
   padding: 1em;
 }
-.details ul li:nth-child(odd){
-  background-color: rgba(0,0,0,0.1);
+.details ul li:nth-child(odd) {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
-.details h2{
+.details h2 {
   text-align: center;
 }
-.details{
+.details {
   border: 2px solid rgba(var(--accent));
 }
-.info-wrapper{
+.info-wrapper {
   padding: 1em;
 }
 
-.individual-image{
+.individual-image {
   width: 100%;
   height: auto;
   max-width: 500px;
 }
 
-
-/* error message 404 and 500 */
-.error-image{
+/* error message screens */
+.error-image {
   display: block;
   margin: auto;
   width: 80%;
   height: auto;
   max-width: 440px;
 }
-.error-message{
+.error-message {
   font-family: var(--heading-font);
   font-size: 1.5em;
   font-weight: bold;
@@ -183,43 +179,41 @@ nav ul li a:hover{
   padding: 1em;
   background-color: black;
 }
-.error-heading{
-  text-align:center;
+.error-heading {
+  text-align: center;
   font-size: 2em;
 }
-/* classification page grid */
 
-.inv-display{
+/* classification page flexbox */
+.inv-display {
   display: flex;
   flex-direction: column;
   align-items: center;
-  
 }
-.inv-display > *{
+.inv-display > * {
   padding: 2em;
   list-style: none;
   width: 100%;
   margin-top: 1em;
   text-align: center;
   border-bottom: 3px solid rgba(var(--accent));
-  
 }
 
-.inv-display img{
+.inv-display img {
   display: block;
   margin: auto;
 }
-.inv-price{
+.inv-price {
   font-size: 1.3em;
   font-family: var(--paragraph-font);
 }
-.inv-link{
-  font-size: .9em;
+.inv-link {
+  font-size: 0.9em;
   font-family: var(--heading-font);
   color: black;
   text-decoration: none;
 }
-.inv-link:visited{
+.inv-link:visited {
   color: black;
 }
 
@@ -263,12 +257,10 @@ nav ul li a:hover{
     border-top: none;
   }
 
-  nav ul li a{
+  nav ul li a {
     padding: 15px;
-}
+  }
 
-
-  
   header {
     padding-top: 20px;
     padding-bottom: 20px;
@@ -289,44 +281,31 @@ nav ul li a:hover{
     padding: 1em;
   }
 
-
-  /* grid on classification pages */
-.inv-display{
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-evenly center;
-}
-
-.inv-display >*{
-  width: 250px;
-  height: 250px;
-  border: 3px solid rgba(var(--accent));
-  border-radius: 25px;
-  margin: 1em;
-}
-/* grid on individual car page */
-.info-wrapper{
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1em;
-  place-items: center;
-}
-
-
-
-
-
-
-}
-
-
-
-
-@media only screen and (min-width: 1200px){
-.inv-display{
-    /* grid-template-columns: repeat(3,1fr); */
+  /* classification page flexbox */
+  .inv-display {
     flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly center;
+  }
+
+  .inv-display > * {
+    width: 250px;
+    height: 250px;
+    border: 3px solid rgba(var(--accent));
+    border-radius: 25px;
+    margin: 1em;
+  }
+  /* grid on individual car page */
+  .info-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1em;
+    place-items: center;
+  }
 }
 
-
+@media only screen and (min-width: 1200px) {
+  .inv-display {
+    flex-direction: row;
+  }
 }

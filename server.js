@@ -69,54 +69,6 @@ app.use(async (err, req, res, next) => {
   }
 })
 
-
-
-
-
-
-
-// app.use(async (err, req, res, next) => {
-//   let nav = await utilities.getNav()
-//   console.error(`Error at: "${req.originalUrl}": ${err.message}`)
-//   // if (err.status === 404) {
-//   //   message = err.message
-//   // }
-//   // else if (err.status === 500) {
-//   //   message = "Oh no! There was a crash. Maybe try a different route?"
-//   //   res.render("errors/error500", {
-//   //     title: "Server Error",
-//   //     message,
-//   //     nav,
-//   //   })
-//   // } else {
-//   //   message = "Oh no! There was a crash. Maybe try a different route?"
-//   // }
-//   // res.render("errors/error", {
-//   //   title: err.status || "Server Error",
-//   //   message,
-//   //   nav,
-//   // })
-//   if (err.status === 404) {
-//     res.render("errors/error", {
-//       title: err.status || "Not Found",
-//       message: err.message,
-//       nav,
-//     })
-//   } else if (err.status === 500) {
-//     res.render("errors/error500", {
-//       title: "Server Error",
-//       message: "Oh no! There was a crash. Maybe try a different route?",
-//       nav,
-//     })
-//   } else {
-//     res.render("errors/error", {
-//       title: err.status || "Server Error",
-//       message: err.message || "Internal Server Error",
-//       nav,
-//     })
-//   }
-// })
-
 /* ***********************
  * Local Server Information
  * Values from .env (environment) file
