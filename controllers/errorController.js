@@ -8,9 +8,7 @@ errorController.generateError = function (req, res, next) {
     next(error)
   }
 }
-
 module.exports = errorController
-
 
   // try {
 
