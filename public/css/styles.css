@@ -217,6 +217,72 @@ nav ul li a:hover {
   color: black;
 }
 
+/* account forms */
+
+.body-div{
+  background-color: rgba(var(--accent));
+  padding: 20px;
+}
+.account-form{
+  background-color: rgba(var(--accent));
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center;  */
+  font-family: var(--heading-font);
+}
+
+.account-form label{
+  text-align: left;
+  margin-top: 15px;
+  padding: 0 15px;
+  font-size: 1.2em;
+  
+}
+.input{
+  padding: 8px;
+  border-radius: 10px;
+  width: 100%;
+  box-sizing: border-box;
+
+}
+
+.form-button{
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 160px;
+  display: block;
+  margin: 20px auto;
+  font-size: 1.2em;
+}
+
+.p-font{
+  font-family: var(--paragraph-font);
+  color: var(--primary);
+}
+.note{
+  text-align: center;
+  font-size: 1.2em;
+}
+.note a{
+  color: black;
+}
+.note a:visited{
+  color: black;
+}
+.password-rules{
+  text-align: center;
+  padding: 1em 2em;
+}
+
+
+input:required:invalid, input:focus:invalid {
+background-color: rgba(255,0,0,0.2);
+}
+ input:required:valid {
+background-color: rgba(var(--accent), 0.2);
+ }
+
 /******* Change Box Model ***************/
 /* *,
 *:before,
@@ -302,10 +368,21 @@ nav ul li a:hover {
     gap: 1em;
     place-items: center;
   }
+
+  .body-div{
+      border-radius: 10px;
+      max-width: 70%;
+      display: block;
+      margin: auto;
+  }
 }
 
 @media only screen and (min-width: 1200px) {
   .inv-display {
     flex-direction: row;
+  }
+
+  .body-div{
+    max-width: 50%;
   }
 }
