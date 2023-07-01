@@ -4,7 +4,11 @@ const router = new express.Router()
 const invController = require("../controllers/invController")
 
 // Route to build inventory by classification view
+router.get("/", invController.buildManagement)
 router.get("/type/:classificationId", invController.buildByClassificationId)
 router.get("/detail/:inv_id", invController.buildByVehicleInvId)
+router.get("/add-inventory", invController.buildAddInventory)
+router.get("/add-classification", invController.buildAddClassification)
+
 
 module.exports = router

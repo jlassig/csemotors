@@ -49,4 +49,51 @@ invCont.buildByVehicleInvId = async function (req, res, next) {
   }
 }
 
+// build management view
+invCont.buildManagement = async function (req, res, next) {
+  try{
+  let nav = await utilities.getNav()
+  res.render("./inventory/management", {
+    title: "Vehicle Management",
+    nav,
+    errors: null,
+    } )}catch (error) {
+    error.status = 500
+    console.error(error.status)
+    next(error)
+    }}
+
+
+invCont.buildAddInventory = async function (req, res, next) {
+  try {
+    let nav = await utilities.getNav()
+    res.render("./inventory/add-inventory", {
+      title: "Add New Vehicle",
+      nav,
+      errors: null,
+    })
+  } catch (error) {
+    error.status = 500
+    console.error(error.status)
+    next(error)
+  }
+}
+
+
+invCont.buildAddClassification = async function (req, res, next) {
+  try {
+    let nav = await utilities.getNav()
+    res.render("./inventory/add-classification", {
+      title: "Add New Classification",
+      nav,
+      errors: null,
+    })
+  } catch (error) {
+    error.status = 500
+    console.error(error.status)
+    next(error)
+  }
+}
+
+
 module.exports = invCont

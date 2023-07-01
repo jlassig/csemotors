@@ -64,7 +64,7 @@ Util.buildClassificationGrid = async function (data) {
         "</a>"
       grid += "</h2>"
       grid +=
-        "<span class='inv-price'>$" +
+        "<span class='inv-price p-font'>$" +
         new Intl.NumberFormat("en-US").format(vehicle.inv_price) +
         "</span>"
       grid += "</div>"
@@ -89,7 +89,7 @@ Util.buildVehicleInfo = async function (data) {
       data[0].inv_model +
       '"/>'
 
-    infoPage += '<div class="details">'
+    infoPage += '<div class="details p-font">'
     infoPage +=
       "<h2>" + data[0].inv_make + " " + data[0].inv_model + " Details:</h2>"
     infoPage += "<ul>"

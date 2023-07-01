@@ -96,7 +96,6 @@ nav ul li a:hover {
 }
 
 .reviews {
-  font-family: var(--paragraph-font);
   line-height: 2em;
 }
 
@@ -138,7 +137,6 @@ nav ul li a:hover {
   font-weight: bold;
 }
 .details ul li {
-  font-family: var(--paragraph-font);
   list-style: none;
   padding: 1em;
 }
@@ -205,7 +203,6 @@ nav ul li a:hover {
 }
 .inv-price {
   font-size: 1.3em;
-  font-family: var(--paragraph-font);
 }
 .inv-link {
   font-size: 0.9em;
@@ -282,6 +279,19 @@ background-color: rgba(255,0,0,0.2);
 }
  input:required:valid {
 background-color: rgba(var(--accent), 0.2);
+ }
+
+ /* management */
+ .management-link{
+  display: block;
+  padding: 10px;
+  font-size: 1.2em;
+ }
+
+ .management-link:hover{
+  background-color: var(--primary);
+  color: var(--secondary);
+  max-width: 300px;
  }
 
 /******* Change Box Model ***************/
