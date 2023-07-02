@@ -86,6 +86,7 @@ invController.buildAddInventory = async function (req, res, next) {
 invController.addInventory = async function (req, res, next) {
   let nav = await utilities.getNav()
   let classDropDown = await utilities.buildClassDropdown()
+  console.log(classDropDown)
   const {
     inv_make,
     inv_model,
@@ -165,9 +166,12 @@ invController.buildAddClassification = async function (req, res, next) {
 invController.AddClassification = async function (req, res, next) {
   const { classification_name } = req.body
   const addClass = await invModel.addNewClassification(classification_name)
-    let nav = await utilities.getNav()
+  let nav = await utilities.getNav()
   if (addClass) {
-    req.flash("notice", `The ${classification_name} classification was successfully added`)
+    req.flash(
+      "notice",
+      `The ${classification_name} classification was successfully added`
+    )
     res.status(201).render("inventory/management", {
       title: "Vehicle Management",
       nav,
@@ -179,7 +183,6 @@ invController.AddClassification = async function (req, res, next) {
       nav,
     })
   }
-
 }
 
 module.exports = invController

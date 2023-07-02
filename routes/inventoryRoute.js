@@ -12,9 +12,9 @@ router.get("/detail/:inv_id", invController.buildByVehicleInvId)
 router.get("/add-inventory", invController.buildAddInventory)
 router.post(
   "/add-inventory",
-  invValidate.vehicleRules,
+  invValidate.vehicleRules(),
   invValidate.checkVehicleData,
-  invController.addInventory
+  utilities.handleErrors(invController.addInventory)
 )
 
 router.get("/add-classification", invController.buildAddClassification)
@@ -22,7 +22,7 @@ router.post(
   "/add-classification",
   invValidate.classRules(),
   invValidate.checkClassData,
-  invController.AddClassification
+  utilities.handleErrors(invController.AddClassification)
 )
 
 module.exports = router
