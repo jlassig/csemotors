@@ -6,6 +6,7 @@ const validate = {}
  *  Registration Data Validation Rules
  * ********************************* */
 validate.registrationRules = () => {
+  console.log("inside reg Rules")
   return [
     // firstname is required and must be string
     body("account_firstname")
@@ -50,10 +51,9 @@ validate.checkRegData = async (req, res, next) => {
   if (!errors.isEmpty()) {
     let nav = await utilities.getNav()
     res.render("account/register", {
-      title: "Register",
+      errors,
+      title: "Registration",
       nav,
- 
-      errors: null,
       account_firstname,
       account_lastname,
       account_email,

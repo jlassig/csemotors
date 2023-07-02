@@ -5,6 +5,15 @@
 
 <!-- message block: -->
 <%- messages() %>
+
+<% if (errors) { %>
+  <ul class="error">
+ <% errors.array().forEach(error => { %>
+   <li><%= error.msg %></li>
+<%  }) %>
+ </ul>
+<% } %>
+
 <div class="body-div">
   <p class="p-font">All Fields are required</p>
   <form action="/inv/add-classification" method="post" class="account-form">
