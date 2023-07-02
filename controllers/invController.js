@@ -86,7 +86,6 @@ invController.buildAddInventory = async function (req, res, next) {
 invController.addInventory = async function (req, res, next) {
   let nav = await utilities.getNav()
   let classDropDown = await utilities.buildClassDropdown()
-  console.log(classDropDown)
   const {
     inv_make,
     inv_model,
@@ -113,7 +112,6 @@ invController.addInventory = async function (req, res, next) {
       inv_color,
       classification_id
     )
-    console.log(carInfo)
     if (carInfo) {
       req.flash("notice", `You\'ve added another vehicle to the inventory`)
       res.status(201).render("inventory/management", {

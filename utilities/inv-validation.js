@@ -5,7 +5,6 @@ const validate = {}
 // classification rules
 
 validate.classRules = () => {
-  console.log("checking Class Rules")
   return [
     body("classification_name")
       .trim()
@@ -17,7 +16,6 @@ validate.classRules = () => {
 
 // check data and return errors or continue
 validate.checkClassData = async (req, res, next) => {
-  console.log("Checking the data")
   const { classification_name } = req.body
   let errors = []
   errors = validationResult(req)
@@ -80,7 +78,6 @@ validate.vehicleRules = () => {
 }
 
 validate.checkVehicleData = async (req, res, next) => {
-  console.log("inside check vehicle data")
   const {
     inv_price,
     inv_miles,
