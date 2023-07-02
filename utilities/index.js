@@ -72,7 +72,7 @@ Util.buildClassificationGrid = async function (data) {
     })
     grid += "</ul>"
   } else {
-    grid += '<p class="notice">Sorry, no matching vehicles could be found.</p>'
+    grid += '<p class="error">Sorry, no matching vehicles could be found.</p>'
   }
   return grid
 }
@@ -115,6 +115,19 @@ Util.buildVehicleInfo = async function (data) {
   }
   infoPage += "</div>"
   return infoPage
+}
+
+Util.buildClassDropdown = async function () {
+  let data = await invModel.getClassifications()
+  let select =
+    '<label for="classification_id">Classification:</label><select id="classification_id" class="class-dropdown" name="classification_id" required>'
+
+  for (var i = 0; i < data.rowCount; i++) {
+    select += `<option value="${data.rows[i].classification_id}">${data.rows[i].classification_name}</option>`;
+  }
+  select += "</select>"
+
+  return select
 }
 
 /* ****************************************

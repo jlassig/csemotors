@@ -4,34 +4,28 @@
 <% } else { res.redirect('/') } %>
 
 <!-- message block: -->
-<% messages() %> <% if (errors) { %>
-<ul class="notice">
-  <% errors.array().forEach(error => { %>
-  <li><%= error.msg %></li>
-  <% }) %>
-</ul>
-<% } %>
+<%- messages() %>
 
 <div class="body-div">
-<p class="p-font">All Fields are required</p>
-<form action="/account/register" method="post" class="account-form">
+  <p class="p-font">All Fields are required</p>
+  <form action="/account/register" method="post" class="account-form">
     <label for="account_firstname">First Name:</label>
     <input
-      type="fname"
+      type="text"
       id="fname"
       class="input"
       name="account_firstname"
+      value="<%= locals.account_firstname %>"
       required />
 
     <label for="account_lastname">Last Name:</label>
     <input
-      type="lname"
+      type="text"
       id="lname"
       class="input"
       name="account_lastname"
+      value="<%= locals.account_lastname %>"
       required />
-
-
 
     <label for="account_email">Email:</label>
     <input
@@ -40,9 +34,9 @@
       class="input"
       name="account_email"
       required
-      placeholder="Enter a valid email address" />
-
-
+      value="<%= locals.account_email %>"
+      placeholder="Enter a valid email address"
+       />
 
     <label for="account_password">Password:</label>
     <input
@@ -52,16 +46,15 @@
       name="account_password"
       required
       pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$" />
-<div class="p-font password-rules">
-  <i>
-    Passwords must be minimum of 12 characters and include 1 capital letter, 1
-    number and 1 special character.
-  </i>
-</div>
+    <div class="p-font password-rules">
+      <i>
+        Passwords must be minimum of 12 characters and include 1 capital letter,
+        1 number and 1 special character.
+      </i>
+    </div>
 
-  <button type="submit" class="form-button">Register</button>
-</form>
-
+    <button type="submit" class="form-button">Register</button>
+  </form>
 </div>
 
 <script src="/js/script.js"></script>

@@ -4,6 +4,23 @@
 <% } else { res.redirect('/') } %>
 
 <!-- message block: -->
-<%# messages() %>
+<%- messages() %>
+<div class="body-div">
+  <p class="p-font">All Fields are required</p>
+  <form action="/inv/add-classification" method="post" class="account-form">
+    <label for="classification_name">Classification Name:</label>
 
-<p>add classification is working</p>
+    <input
+      type="text"
+      id="classification_name"
+      class="input"
+      name="classification_name"
+      pattern="^[A-Za-z]+$"
+      required />
+
+    <span class="form-span p-font"
+      >Name must be in alphabetic characters only.</span
+    >
+    <button type="submit" class="form-button">Add Classification</button>
+  </form>
+</div>

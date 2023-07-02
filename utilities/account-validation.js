@@ -5,7 +5,7 @@ const validate = {}
 /*  **********************************
  *  Registration Data Validation Rules
  * ********************************* */
-validate.registationRules = () => {
+validate.registrationRules = () => {
   return [
     // firstname is required and must be string
     body("account_firstname")
@@ -21,10 +21,10 @@ validate.registationRules = () => {
 
     // valid email is required and cannot already exist in the DB
     body("account_email")
-    .trim()
-    .isEmail()
-    .normalizeEmail() // refer to validator.js docs
-    .withMessage("A valid email is required."),
+      .trim()
+      .isEmail()
+      .normalizeEmail() // refer to validator.js docs
+      .withMessage("A valid email is required."),
 
     // password is required and must be strong password
     body("account_password")
@@ -50,9 +50,10 @@ validate.checkRegData = async (req, res, next) => {
   if (!errors.isEmpty()) {
     let nav = await utilities.getNav()
     res.render("account/register", {
-      errors,
-      title: "Registration",
+      title: "Register",
       nav,
+ 
+      errors: null,
       account_firstname,
       account_lastname,
       account_email,

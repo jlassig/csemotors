@@ -213,6 +213,19 @@ nav ul li a:hover {
 .inv-link:visited {
   color: black;
 }
+.error{
+  color: red;
+  font-weight: bold;
+  font-family: var(--paragraph-font);
+}
+
+.notice{
+  color: var(--secondary);
+  background-color: var(--primary);
+  font-family: var(--paragraph-font);
+  padding: .5em;
+  max-width: 40%;
+}
 
 /* account forms */
 
@@ -242,6 +255,7 @@ nav ul li a:hover {
   width: 100%;
   box-sizing: border-box;
   background-color: white;
+
 
 }
 
@@ -274,9 +288,11 @@ nav ul li a:hover {
 }
 
 
-input:required:invalid, input:focus:invalid {
-background-color: rgba(255,0,0,0.2);
+ input:required:invalid, input:focus:invalid {
+background-color: pink;
 }
+
+
  input:required:valid {
 background-color: rgba(var(--accent), 0.2);
  }
@@ -292,6 +308,17 @@ background-color: rgba(var(--accent), 0.2);
   background-color: var(--primary);
   color: var(--secondary);
   max-width: 300px;
+ }
+ .form-span{
+  display: block;
+  padding: 10px;
+  text-align: center;
+ }
+
+ .class-dropdown{
+    padding: 8px;
+  border-radius: 10px;
+  width: 100%;
  }
 
 /******* Change Box Model ***************/
