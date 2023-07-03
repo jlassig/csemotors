@@ -119,16 +119,19 @@ Util.buildVehicleInfo = async function (data) {
   return infoPage
 }
 
-Util.buildClassDropdown = async function () {
+Util.buildClassDropdown = async function (classification_id) {
   let data = await invModel.getClassifications()
   let select =
     '<label for="classification_id">Classification:</label><select id="classification_id" class="class-dropdown" name="classification_id" required>'
 
   for (var i = 0; i < data.rowCount; i++) {
-    select += `<option value="${data.rows[i].classification_id}">${data.rows[i].classification_name}</option>`
+    const selected =
+      classification_id && data.rows[i].classification_id === classification_id
+        ? "selected"
+        : ""
+    select += `<option value="${data.rows[i].classification_id}" ${selected}>${data.rows[i].classification_name}</option>`
   }
   select += "</select>"
-
   return select
 }
 

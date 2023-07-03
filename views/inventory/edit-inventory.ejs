@@ -14,7 +14,7 @@
 
 <div class="body-div">
   <p class="p-font">All Fields are required</p>
-  <form action="/inv/add-inventory" method="post" class="account-form">
+  <form action="/inv/update" method="post" id="updateForm" class="account-form">
     <div><%- classDropDown %></div>
 
     <label for="inv_make">Make: </label>
@@ -107,6 +107,12 @@
       name="inv_color"
       value="<%= locals.inv_color %>"
       required />
-    <button type="submit" class="form-button">Add Vehicle</button>
+    <button type="submit" class="form-button" disabled>Update Vehicle</button>
+
+    <input type="hidden" name="inv_id" <% if(locals.inv_id) { %> value="<%=
+    locals.inv_id %>" <% } %>>
   </form>
 </div>
+
+<script src="../../js/inv-update.js"></script>
+

@@ -27,11 +27,11 @@ async function getInventoryByClassificationId(classification_id) {
   }
 }
 
-async function getVehicleByInvId(inventory_id) {
+async function getVehicleByInvId(inv_id) {
   try {
     const data = await pool.query(
       "SELECT * FROM public.inventory as i WHERE i.inv_id = $1",
-      [inventory_id]
+      [inv_id]
     )
     return data.rows
   } catch (error) {
@@ -40,15 +40,14 @@ async function getVehicleByInvId(inventory_id) {
 }
 
 // for the management to add a new classification type
-async function addNewClassification(classification_name){
-  try{
+async function addNewClassification(classification_name) {
+  try {
     const sql =
       "INSERT INTO classification(classification_name)VALUES ($1) RETURNING *"
-    return await pool.query(sql,[classification_name,])
-  }catch(error){
+    return await pool.query(sql, [classification_name])
+  } catch (error) {
     return error.message
   }
-
 }
 
 //for management to add a new vehicle type
@@ -80,9 +79,47 @@ async function addNewVehicle(
   ])
 }
 
+//for management to update a vehicle in the inventory
+async function updateInventory(
+  inv_id,
+  inv_make,
+  inv_model,
+  inv_year,
+  inv_description,
+  inv_image,
+  inv_thumbnail,
+  inv_price,
+  inv_miles,
+  inv_color,
+  classification_id
+) {
+  try {
+    const sql =
+      "UPDATE public.inventory SET inv_make = $1, inv_model = $2, inv_description = $3, inv_image = $4, inv_thumbnail = $5, inv_price = $6, inv_year = $7, inv_miles = $8, inv_color = $9, classification_id = $10 WHERE inv_id = $11 RETURNING *"
+    const data = await pool.query(sql, [
+      inv_make,
+      inv_model,
+      inv_year,
+      inv_description,
+      inv_image,
+      inv_thumbnail,
+      inv_price,
+      inv_miles,
+      inv_color,
+      classification_id,
+      inv_id,
+    ])
+    return data.rows[0]
+  } catch (error) {
+    console.error("model error: " + error)
+  }
+}
+
 module.exports = {
   getClassifications,
   getInventoryByClassificationId,
-  getVehicleByInvId,addNewClassification,
-  addNewVehicle
+  getVehicleByInvId,
+  addNewClassification,
+  addNewVehicle,
+  updateInventory,
 }
