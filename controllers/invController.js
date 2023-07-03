@@ -176,6 +176,7 @@ invController.buildAddClassification = async function (req, res, next) {
 invController.AddClassification = async function (req, res, next) {
   const { classification_name } = req.body
   const addClass = await invModel.addNewClassification(classification_name)
+  let classDropDown = await utilities.buildClassDropdown()
   let nav = await utilities.getNav()
   if (addClass) {
     req.flash(
@@ -185,12 +186,14 @@ invController.AddClassification = async function (req, res, next) {
     res.status(201).render("inventory/management", {
       title: "Vehicle Management",
       nav,
+      classDropDown,
     })
   } else {
     req.flash("error", "Provide a correct classification name")
     res.status(501).render("inventory/add-classification", {
       title: "Add Classification",
       nav,
+      classDropDown,
     })
   }
 }
