@@ -5,8 +5,13 @@
 
 <!-- message block: -->
 <%- messages() %>
+
 <div class="body-div">
-  <form class="account-form">
+  <form
+    id="loginForm"
+    action="/account/login"
+    method="post"
+    class="account-form">
     <label for="account_email">Email:</label>
     <input
       type="email"
