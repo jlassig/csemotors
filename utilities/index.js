@@ -179,9 +179,11 @@ Util.checkLogin = (req, res, next) => {
   }
 }
 
+//logout
 Util.logout = (req, res, next) => {
     res.clearCookie("jwt")
     res.locals.loggedin = 0
   }
+
 
 module.exports = Util

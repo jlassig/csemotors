@@ -28,4 +28,6 @@ router.post(
 
 router.get("/logout", utilities.handleErrors(accountController.logoutUser))
 
+router.get("/edit/:account_id", utilities.handleErrors(accountController.buildAccountEdit) )
+
 module.exports = router

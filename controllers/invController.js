@@ -65,7 +65,7 @@ invController.buildManagement = async function (req, res, next) {
     let nav = await utilities.getNav()
     const classDropDown = await utilities.buildClassDropdown()
     res.render("./inventory/management", {
-      title: "Vehicle Management",
+      title: "Inventory Management",
       nav,
       errors: null,
       classDropDown,
@@ -127,7 +127,7 @@ invController.addInventory = async function (req, res, next) {
     if (carInfo) {
       req.flash("notice", `You\'ve added another vehicle to the inventory`)
       res.status(201).render("inventory/management", {
-        title: "Vehicle Management",
+        title: "Inventory Management",
         nav,
         classDropDown,
         errors: null,
@@ -184,7 +184,7 @@ invController.AddClassification = async function (req, res, next) {
       `The ${classification_name} classification was successfully added`
     )
     res.status(201).render("inventory/management", {
-      title: "Vehicle Management",
+      title: "Inventory Management",
       nav,
       classDropDown,
     })

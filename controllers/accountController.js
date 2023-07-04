@@ -129,6 +129,11 @@ async function logoutUser(req, res, next) {
     return res.redirect("/")
   }
 
+
+
+
+
+
 module.exports = {
   buildLogin,
   buildRegister,
