@@ -29,5 +29,6 @@ router.post(
 router.get("/logout", utilities.handleErrors(accountController.logoutUser))
 
 router.get("/edit/:account_id", utilities.handleErrors(accountController.buildAccountEdit) )
-
+router.post("/updateaccount", utilities.handleErrors(accountController.updateAccount))
+router.post("/updatepassword", utilities.handleErrors(accountController.updatePassword))
 module.exports = router
