@@ -3,20 +3,29 @@
     <a href="/" title="Return to home page" class="home-link">CSE Motors</a>
   </span>
   <div id="tools">
-    <a title="Click to log in" href="/account/login" class="account-link" id="accountLink"
+    <% if (locals.loggedin) { %>
+    <a
+      title="Account Management"
+      href="/account/"
+      class="welcome-link"
+      id="welcomeLink"
+      >Welcome <%= locals.accountData.account_firstname %></a
+    >
+    <a
+      title="Click to log out"
+      href="/account/logout"
+      class="logout-link"
+      id="logoutLink"
+      >Logout</a
+    >
+    <% } else { %>
+    <a
+      title="Click to log in"
+      href="/account/login"
+      class="account-link"
+      id="accountLink"
       >My Account</a
     >
-    <a title="Account Management" href="/account/" class="welcome-link" id="welcomeLink"
-      >Welcome</a
-    >
-    <a title="Click to log out" href="/" class="logout-link" id="logoutLink" >Logout</a>
+    <% } %>
   </div>
 </header>
-
-
-<!-- <script src="../../js/loggedin.js"></script> -->
-<% if (locals.loggedin) { %>
-<script src="../../js/loggedin.js"></script>
-<% } else { %>
-<script src="../../js/loggedout.js"></script>
-<% } %>

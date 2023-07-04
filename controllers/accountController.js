@@ -121,10 +121,19 @@ async function accountLogin(req, res) {
   }
 }
 
+//logout
+
+async function logoutUser(req, res, next) {
+    utilities.logout(req, res, next)
+    req.flash("notice", "You're now logged out.")
+    return res.redirect("/")
+  }
+
 module.exports = {
   buildLogin,
   buildRegister,
   registerAccount,
   accountLogin,
   buildManagement,
+  logoutUser,
 }

@@ -216,11 +216,8 @@ invController.getInventoryJSON = async (req, res, next) => {
 // build Edit - this is a tool for managers to edit the inventory items.
 invController.buildEdit = async function (req, res, next) {
   const inv_id = parseInt(req.params.inv_id)
-  console.log(inv_id)
   let nav = await utilities.getNav()
   const itemData = await invModel.getVehicleByInvId(inv_id)
-  // console.log(itemData)
-  // console.log(itemData.inv_make)
   let classDropDown = await utilities.buildClassDropdown(
     itemData[0].classification_id
   )
@@ -315,11 +312,8 @@ invController.updateInventory = async function (req, res, next) {
 // build the delete view after the manager clicks "delete" on one of the vehicles on the management screen:
 invController.buildDelete = async function (req, res, next) {
   const inv_id = parseInt(req.params.inv_id)
-  console.log("Inside buildDelete in Controller: ",inv_id)
   let nav = await utilities.getNav()
   const itemData = await invModel.getVehicleByInvId(inv_id)
-  // console.log(itemData)
-  // console.log(itemData.inv_make)
   const itemName = `${itemData[0].inv_make} ${itemData[0].inv_model}`
   try {
     res.render("./inventory/delete-confirm", {
@@ -345,7 +339,6 @@ invController.buildDelete = async function (req, res, next) {
 invController.deleteInventory = async function (req, res, next) {
   let nav = await utilities.getNav()
   const inv_id = parseInt(req.body.inv_id)
-  console.log("Inside deleteInventory in Controller: ", inv_id)
   const deleteTheVehicle = await invModel.deleteVehicle(
     inv_id,
   )
