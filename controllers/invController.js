@@ -312,4 +312,52 @@ invController.updateInventory = async function (req, res, next) {
   }
 }
 
+// build the delete view after the manager clicks "delete" on one of the vehicles on the management screen:
+invController.buildDelete = async function (req, res, next) {
+  const inv_id = parseInt(req.params.inv_id)
+  console.log("Inside buildDelete in Controller: ",inv_id)
+  let nav = await utilities.getNav()
+  const itemData = await invModel.getVehicleByInvId(inv_id)
+  // console.log(itemData)
+  // console.log(itemData.inv_make)
+  const itemName = `${itemData[0].inv_make} ${itemData[0].inv_model}`
+  try {
+    res.render("./inventory/delete-confirm", {
+      title: "Delete:  " + itemName,
+      nav,
+      errors: null,
+      inv_id: itemData[0].inv_id,
+      inv_make: itemData[0].inv_make,
+      inv_model: itemData[0].inv_model,
+      inv_year: itemData[0].inv_year,
+      inv_price: itemData[0].inv_price,
+    })
+  } catch (error) {
+    error.status = 500
+    console.error(error.status)
+    next(error)
+  }
+}
+
+/* ***************************
+ *  Delete Inventory Data
+ * ************************** */
+invController.deleteInventory = async function (req, res, next) {
+  let nav = await utilities.getNav()
+  const inv_id = parseInt(req.body.inv_id)
+  console.log("Inside deleteInventory in Controller: ", inv_id)
+  const deleteTheVehicle = await invModel.deleteVehicle(
+    inv_id,
+  )
+
+  if (deleteTheVehicle) {
+    req.flash("notice", "The vehicle was successfully deleted.")
+    res.redirect("/inv/")
+  } else {
+    const itemName = `${inv_make} ${inv_model}`
+    req.flash("notice", "Sorry, the insert failed.")
+    res.redirect("/inv/delete/inv_id")
+  }
+}
+
 module.exports = invController

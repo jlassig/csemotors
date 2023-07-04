@@ -7,8 +7,10 @@ const invValidate = require("../utilities/inv-validation")
 
 // Route to build inventory by classification view
 router.get("/", invController.buildManagement)
+
 router.get("/type/:classificationId", invController.buildByClassificationId)
 router.get("/detail/:inv_id", invController.buildByVehicleInvId)
+
 router.get("/add-inventory", invController.buildAddInventory)
 router.post(
   "/add-inventory",
@@ -36,5 +38,8 @@ router.post(
   invValidate.checkUpdateData,
   utilities.handleErrors(invController.updateInventory)
 )
+
+router.get("/delete/:inv_id", utilities.handleErrors(invController.buildDelete))
+router.post("/delete/", utilities.handleErrors(invController.deleteInventory))
 
 module.exports = router

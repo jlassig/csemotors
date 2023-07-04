@@ -1,3 +1,4 @@
+
 const pool = require("../database/")
 
 /* ***************************
@@ -115,6 +116,17 @@ async function updateInventory(
   }
 }
 
+//for management to delete a vehicle in the inventory
+async function deleteVehicle(inv_id) {
+  try {
+    const sql = "DELETE FROM inventory WHERE inv_id = $1"
+    const data = await pool.query(sql, [inv_id])
+    return data
+  } catch (error) {
+    console.error("Delete Inventory Error")
+  }
+}
+
 module.exports = {
   getClassifications,
   getInventoryByClassificationId,
@@ -122,4 +134,5 @@ module.exports = {
   addNewClassification,
   addNewVehicle,
   updateInventory,
+  deleteVehicle,
 }
