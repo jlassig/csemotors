@@ -154,6 +154,7 @@ async function buildAccountEdit(req, res, next) {
 //to update the account based on the user's input
 async function updateAccount(req, res, next) {
   let nav = await utilities.getNav()
+  try{
   const { account_id, account_firstname, account_lastname, account_email } =
     req.body
   const updatedAcctInfo = await accountModel.updateAccount(
@@ -189,8 +190,13 @@ async function updateAccount(req, res, next) {
       account_lastname,
       account_email,
     })
+  }}catch(error){
+        error.status = 500
+    console.error(error.status)
+    next(error)
   }
-}
+  }
+
 
 //to update the password based on the user's input.
 async function updatePassword(req, res, next) {
