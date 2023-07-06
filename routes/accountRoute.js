@@ -25,8 +25,8 @@ router.post(
   regValidate.checkRegData,
   utilities.handleErrors(accountController.registerAccount)
 )
-
 router.get("/logout", utilities.handleErrors(accountController.logoutUser))
+
 
 router.get("/edit/:account_id", utilities.handleErrors(accountController.buildAccountEdit) )
 router.post("/updateaccount", regValidate.updateAcctRules(), regValidate.checkRegData, utilities.handleErrors(accountController.updateAccount))
