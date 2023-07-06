@@ -66,7 +66,6 @@ validate.updateAcctRules = () => {
 
 
 validate.updatePassRules = () => {
-  console.log("inside updatePassRules")
   return [
     // password is required and must be strong password
     body("account_password")
