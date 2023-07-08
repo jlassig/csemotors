@@ -29,7 +29,9 @@ validate.registrationRules = () => {
       .custom(async (account_email) => {
         const emailInUse = await accountModel.checkExistingEmail(account_email)
         if (emailInUse) {
-          throw new Error("That email is already in use. Log in or try a different email.")
+          throw new Error(
+            "That email is already in use. Log in or try a different email."
+          )
         }
       }),
 
@@ -46,6 +48,9 @@ validate.registrationRules = () => {
       .withMessage("Password does not meet requirements."),
   ]
 }
+
+
+
 
 validate.updateAcctRules = () => {
   return [
@@ -67,8 +72,12 @@ validate.updateAcctRules = () => {
       .isEmail()
       .normalizeEmail() // refer to validator.js docs
       .withMessage("A valid email is required.")
-      .custom(async (account_email) => {
-        const emailInUse = await accountModel.checkExistingEmail(account_email)
+      .custom(async (account_email, { req }) => {
+        const emailInUse = await accountModel.checkEmailUpdate(
+          account_email,
+          req.body.account_id
+        )
+
         if (emailInUse) {
           throw new Error(
             "That email is already in use. Log in or try a different email."
@@ -77,6 +86,15 @@ validate.updateAcctRules = () => {
       }),
   ]
 }
+
+
+
+
+
+
+
+
+
 
 validate.updatePassRules = () => {
   return [
@@ -95,13 +113,11 @@ validate.updatePassRules = () => {
 }
 
 validate.checkUpdatePass = async (req, res, next) => {
-  console.log("inside check update pass")
-  console.log(req.body)
-   const { account_password } = req.body
+  // const { account_password } = req.body
   let errors = []
 
   errors = validationResult(req)
-    console.log(errors)
+  console.log(errors)
   if (!errors.isEmpty()) {
     let nav = await utilities.getNav()
     res.render("account/update", {
@@ -191,6 +207,7 @@ validate.checkLoginData = async (req, res, next) => {
       title: "Login",
       nav,
       account_email,
+      
     })
     return
   }

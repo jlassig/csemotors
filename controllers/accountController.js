@@ -183,7 +183,7 @@ async function updateAccount(req, res, next) {
     } else {
       req.flash(
         "error",
-        `Sorry, ${account_firstname} the update failed. Please try again.`
+        `Sorry, ${account_firstname}, the update failed. Please try again.`
       )
       res.status(501).render("./account/update", {
         title: "Edit Account",

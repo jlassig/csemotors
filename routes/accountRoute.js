@@ -45,9 +45,5 @@ router.post(
   utilities.handleErrors(accountController.updatePassword)
 )
 
-// router.get(
-//   "/management",
-//   utilities.handleErrors(accountController.buildManagement)
-// )
 
 module.exports = router
