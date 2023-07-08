@@ -27,8 +27,27 @@ router.post(
 )
 router.get("/logout", utilities.handleErrors(accountController.logoutUser))
 
+router.get(
+  "/edit/:account_id",
+  utilities.handleErrors(accountController.buildAccountEdit)
+)
+router.post(
+  "/updateaccount",
+  regValidate.updateAcctRules(),
+  regValidate.checkUpdateData,
+  utilities.handleErrors(accountController.updateAccount)
+)
 
-router.get("/edit/:account_id", utilities.handleErrors(accountController.buildAccountEdit) )
-router.post("/updateaccount", regValidate.updateAcctRules(), regValidate.checkRegData, utilities.handleErrors(accountController.updateAccount))
-router.post("/updatepassword", regValidate.updatePassRules(), utilities.handleErrors(accountController.updatePassword))
+router.post(
+  "/updatepassword",
+  regValidate.updatePassRules(),
+  regValidate.checkUpdatePass,
+  utilities.handleErrors(accountController.updatePassword)
+)
+
+// router.get(
+//   "/management",
+//   utilities.handleErrors(accountController.buildManagement)
+// )
+
 module.exports = router

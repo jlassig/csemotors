@@ -40,7 +40,6 @@ validate.registrationRules = () => {
   ]
 }
 
-
 validate.updateAcctRules = () => {
   return [
     // firstname is required and must be string
@@ -64,8 +63,8 @@ validate.updateAcctRules = () => {
   ]
 }
 
-
 validate.updatePassRules = () => {
+  console.log("inside update Pass Rules")
   return [
     // password is required and must be strong password
     body("account_password")
@@ -81,8 +80,26 @@ validate.updatePassRules = () => {
   ]
 }
 
+validate.checkUpdatePass = async (req, res, next) => {
+  console.log("inside check update pass")
+  console.log(req.body)
+   const { account_password } = req.body
+  let errors = []
 
-
+  errors = validationResult(req)
+    console.log(errors)
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav()
+    res.render("account/update", {
+      errors,
+      title: "Edit Account",
+      nav,
+      account_id: req.body.account_id,
+    })
+    return
+  }
+  next()
+}
 
 /* ******************************
  * Check data and return errors or continue to registration
@@ -96,6 +113,26 @@ validate.checkRegData = async (req, res, next) => {
     res.render("account/register", {
       errors,
       title: "Registration",
+      nav,
+      account_firstname,
+      account_lastname,
+      account_email,
+    })
+    return
+  }
+  next()
+}
+
+//almost the same thing as above, but a different view is rendered if error
+validate.checkUpdateData = async (req, res, next) => {
+  const { account_firstname, account_lastname, account_email } = req.body
+  let errors = []
+  errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav()
+    res.render("account/update", {
+      errors,
+      title: "Edit Account",
       nav,
       account_firstname,
       account_lastname,

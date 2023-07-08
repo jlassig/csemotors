@@ -332,6 +332,8 @@ input:required:valid {
   background-color: rgba(var(--accent), 0.2);
 }
 
+
+
 /* management */
 .management-link {
   display: block;
@@ -460,7 +462,7 @@ input:required:valid {
 
   .body-div {
     border-radius: 10px;
-    max-width: 70%;
+    max-width: 65%;
     display: block;
     margin: auto;
   }

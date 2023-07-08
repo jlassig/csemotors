@@ -154,49 +154,53 @@ async function buildAccountEdit(req, res, next) {
 //to update the account based on the user's input
 async function updateAccount(req, res, next) {
   let nav = await utilities.getNav()
-  try{
-  const { account_id, account_firstname, account_lastname, account_email } =
-    req.body
-  const updatedAcctInfo = await accountModel.updateAccount(
-    account_id,
-    account_firstname,
-    account_lastname,
-    account_email
-  )
-  if (updatedAcctInfo) {
-    req.flash(
-      "notice",
-      `${account_firstname}, your account was successfully updated.`
-    )
-    res.render("./account/management", {
-      title: "Account Management",
-      nav,
+  try {
+    const { account_id, account_firstname, account_lastname, account_email } =
+      req.body
+
+    const updatedAcctInfo = await accountModel.updateAccount(
       account_id,
       account_firstname,
       account_lastname,
-      account_email,
-    })
-  } else {
-    req.flash(
-      "error",
-      `Sorry, ${account_firstname} the update failed. Please try again.`
+      account_email
     )
-    res.status(501).render("account/update", {
-      title: "Edit Account",
-      nav,
-      errors: null,
-      account_id,
-      account_firstname,
-      account_lastname,
-      account_email,
+
+    if (updatedAcctInfo) {
+    //get the updated full account:
+    const accountData = await accountModel.getAccountByID(account_id)
+    //reset the session with the new information:
+    const token = jwt.sign(accountData, process.env.ACCESS_TOKEN_SECRET, {
+      expiresIn: 3600 * 1000,
     })
-  }}catch(error){
-        error.status = 500
+    res.cookie("jwt", token, { httpOnly: true, maxAge: 3600 * 1000 })
+      req.flash(
+        "notice",
+        `${account_firstname}, your account was successfully updated.`
+      )
+
+      res.redirect("/account/")
+
+    } else {
+      req.flash(
+        "error",
+        `Sorry, ${account_firstname} the update failed. Please try again.`
+      )
+      res.status(501).render("./account/update", {
+        title: "Edit Account",
+        nav,
+        errors: null,
+        account_id,
+        account_firstname,
+        account_lastname,
+        account_email,
+      })
+    }
+  } catch (error) {
+    error.status = 500
     console.error(error.status)
     next(error)
   }
-  }
-
+}
 
 //to update the password based on the user's input.
 async function updatePassword(req, res, next) {

@@ -12,7 +12,7 @@
 </ul>
 <% } %>
 
-<div class="body-div">
+<div class="body-div update-form">
   <h2>Account Update</h2>
   <form action="/account/updateaccount" method="post" class="account-form">
     <label for="account_firstname">First Name:</label>
@@ -47,8 +47,9 @@
     value="<%= locals.account_id %>" <% } %>>
   </form>
 </div>
+<br>
 
-<div class="body-div">
+<div class="body-div pass-form">
   <h2>Change Password</h2>
   <form action="/account/updatepassword" method="post" class="account-form">
        <div class="p-font password-rules">
