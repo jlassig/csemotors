@@ -9,13 +9,13 @@
 <h2>Welcome <%= locals.accountData.account_firstname %></h2>
 
 <a href="/account/edit/<%=locals.accountData.account_id%>" title="Update Account Information"
-  >Update Account Information</a
+  class="p-font">Update Account Information</a
 >
 
 <% if (locals.loggedin && ((locals.accountData.account_type == "Admin") ||
 (locals.accountData.account_type == "Employee"))) { %>
 <h3>Inventory Management</h3>
 <p>
-  <a title="Inventory Management" href="/inv/">Manage Inventory</a>
+  <a title="Inventory Management" href="/inv/" class="p-font">Manage Inventory</a>
 </p>
 <%}%>

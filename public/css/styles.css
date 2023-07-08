@@ -358,6 +358,17 @@ input:required:valid {
   width: 100%;
 }
 
+.inv-table{
+  padding-top: 20px;
+}
+
+.inv-table td{
+  padding: 7px;
+}
+
+
+
+
 /******* Change Box Model ***************/
 /* *,
 *:before,
