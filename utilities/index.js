@@ -79,12 +79,18 @@ Util.buildClassificationGrid = async function (data) {
   return grid
 }
 
+Util.buildGoBack = async function (vehicle) {
+  let vehicleName = `${vehicle[0].inv_make} ${vehicle[0].inv_model}`
+  let goBack = `<p class="p-font">Go back to <a href="/inv/detail/${vehicle[0].inv_id}">${vehicleName}</a></p>`
+  return goBack
+}
+
 Util.buildUpgradeDropdown = async function (inv_id, upgrade_id) {
   let data = await invModel.getUpgradesByInventoryID(inv_id)
   let select = `<label for="upgrade_id">Upgrades:</label>
                 <select id="upgrade_id" class="class-dropdown p-font" name="upgrade_id" required>`
 
-  if (data.length>0) {
+  if (data.length > 0) {
     select += `<option value="" disabled selected>Select upgrade</option>`
 
     for (var i = 0; i < data.length; i++) {
@@ -165,7 +171,8 @@ Util.buildVehicleInfo = async function (data) {
       '<li> <span class="boldme">Color:</span> ' + data[0].inv_color + "</li>"
     infoPage += `<li>${upgradeDropdown}<li>`
 
-    infoPage += "</ul></div>"
+    infoPage += "</ul>"
+    infoPage += `<input type="hidden" id="hidden_inv_id" value=${invid}></div>`
   } else {
     infoPage +=
       '<p class="notice">Sorry, no matching vehicle could be found.</p>'

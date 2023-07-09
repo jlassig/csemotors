@@ -63,8 +63,10 @@ invController.buildByVehicleInvId = async function (req, res, next) {
 
 invController.buildUpgrade = async function (req, res, next) {
   try {
-    console.log(req.params)
     const upgrade_id = req.params.upgrade_id
+    const inv_id = req.params.inv_id
+    const vehicle = await invModel.getVehicleByInvId(inv_id)
+    const goBack = await utilities.buildGoBack(vehicle)
     const data = await invModel.getUpgradeByID(upgrade_id)
     const upgradeInfoPage = await utilities.buildUpgradeInfo(data)
     let nav = await utilities.getNav()
@@ -73,6 +75,7 @@ invController.buildUpgrade = async function (req, res, next) {
     res.render("./inventory/upgrade", {
       title: upgradeName,
       nav,
+      goBack,
       upgradeInfoPage,
     })
   } catch (error) {
