@@ -10,6 +10,13 @@ async function getClassifications() {
   )
 }
 
+
+async function getUpgrades() {
+  return await pool.query(
+    "SELECT * FROM public.upgrade ORDER BY short_name"
+  )
+}
+
 /* ***************************
  *  Get all inventory items and classification_name by classification_id
  * ************************** */
@@ -28,6 +35,25 @@ async function getInventoryByClassificationId(classification_id) {
   }
 }
 
+
+async function getUpgradesByInventoryID(inv_id) {
+  try {
+    const data = await pool.query(
+      `SELECT u.* FROM public.invupgrade AS iu
+      JOIN public.upgrade AS u
+      ON iu.upgrade_id = u.upgrade_id
+      WHERE iu.inv_id = $1`,
+      [inv_id]
+    )
+    return data.rows
+  } catch (error) {
+    console.error("getupgradesbyinventoryid error " + error)
+  }
+}
+
+
+
+
 async function getVehicleByInvId(inv_id) {
   try {
     const data = await pool.query(
@@ -39,6 +65,21 @@ async function getVehicleByInvId(inv_id) {
     console.error("getvehiclebyinvid error " + error)
   }
 }
+
+
+
+async function getUpgradeByID(upgrade_id) {
+  try {
+    const data = await pool.query(
+      "SELECT * FROM public.upgrade as u WHERE u.upgrade_id = $1",
+      [upgrade_id]
+    )
+    return data.rows
+  } catch (error) {
+    console.error("inventorymodel/getUpgradeByID error " + error)
+  }
+}
+
 
 // for the management to add a new classification type
 async function addNewClassification(classification_name) {
@@ -135,4 +176,7 @@ module.exports = {
   addNewVehicle,
   updateInventory,
   deleteVehicle,
+  getUpgrades,
+  getUpgradeByID,
+  getUpgradesByInventoryID,
 }

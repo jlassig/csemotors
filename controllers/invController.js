@@ -45,6 +45,7 @@ invController.buildByVehicleInvId = async function (req, res, next) {
     const data = await invModel.getVehicleByInvId(inv_id)
     const infoPage = await utilities.buildVehicleInfo(data)
     let nav = await utilities.getNav()
+
     const vehicleName =
       data[0].inv_year + " " + data[0].inv_make + " " + data[0].inv_model
     res.render("./inventory/individual", {
@@ -58,6 +59,32 @@ invController.buildByVehicleInvId = async function (req, res, next) {
     next(error)
   }
 }
+
+
+invController.buildUpgrade = async function (req, res, next) {
+  try {
+    console.log(req.params)
+    const upgrade_id = req.params.upgrade_id
+    const data = await invModel.getUpgradeByID(upgrade_id)
+    const upgradeInfoPage = await utilities.buildUpgradeInfo(data)
+    let nav = await utilities.getNav()
+
+    const upgradeName = data[0].name 
+    res.render("./inventory/upgrade", {
+      title: upgradeName,
+      nav,
+      upgradeInfoPage,
+    })
+  } catch (error) {
+    error.status = 500
+    console.error(error.status)
+    next(error)
+  }
+}
+
+
+
+
 
 // build management view
 invController.buildManagement = async function (req, res, next) {

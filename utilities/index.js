@@ -79,7 +79,61 @@ Util.buildClassificationGrid = async function (data) {
   return grid
 }
 
+Util.buildUpgradeDropdown = async function (inv_id, upgrade_id) {
+  let data = await invModel.getUpgradesByInventoryID(inv_id)
+  let select = `<label for="upgrade_id">Upgrades:</label>
+                <select id="upgrade_id" class="class-dropdown p-font" name="upgrade_id" required>`
+
+  if (data.length>0) {
+    select += `<option value="" disabled selected>Select upgrade</option>`
+
+    for (var i = 0; i < data.length; i++) {
+      const selected =
+        upgrade_id && data[i]?.upgrade_id === upgrade_id ? "selected" : ""
+      select += `<option value="${data[i].upgrade_id}" ${selected}>${data[i].short_name}</option>`
+    }
+  } else {
+    select += `<option value="" disabled selected>No upgrades available </option>`
+  }
+
+  select += `</select>`
+
+  return select
+}
+
+Util.buildUpgradeInfo = async function (data) {
+  let infoPage = '<div id="info-wrapper" class="info-wrapper">'
+  if (data.length > 0) {
+    infoPage +=
+      '<img class="individual-image" src="' +
+      data[0].image +
+      '" alt="Image of ' +
+      data[0].name +
+      '"/>'
+
+    infoPage += '<div class="details p-font">'
+    infoPage += "<h2>" + data[0].name + " Details:</h2>"
+    infoPage += "<ul>"
+    infoPage +=
+      '<li> <span class="boldme">Price:</span> $' +
+      new Intl.NumberFormat("en-US").format(data[0].price) +
+      "</li>"
+    infoPage +=
+      '<li> <span class="boldme">Description:</span> ' +
+      data[0].description +
+      "</li>"
+    infoPage += "</ul></div>"
+  } else {
+    infoPage +=
+      '<p class="notice">Sorry, no matching upgrade could be found.</p>'
+  }
+  infoPage += "</div>"
+  return infoPage
+}
+
 Util.buildVehicleInfo = async function (data) {
+  let invid = data[0].inv_id
+  let upgradeDropdown = await Util.buildUpgradeDropdown(invid)
   let infoPage = '<div id="info-wrapper" class="info-wrapper">'
   if (data.length > 0) {
     infoPage +=
@@ -109,6 +163,7 @@ Util.buildVehicleInfo = async function (data) {
       "</li>"
     infoPage +=
       '<li> <span class="boldme">Color:</span> ' + data[0].inv_color + "</li>"
+    infoPage += `<li>${upgradeDropdown}<li>`
 
     infoPage += "</ul></div>"
   } else {
@@ -181,9 +236,8 @@ Util.checkLogin = (req, res, next) => {
 
 //logout
 Util.logout = (req, res, next) => {
-    res.clearCookie("jwt")
-    res.locals.loggedin = 0
-  }
-
+  res.clearCookie("jwt")
+  res.locals.loggedin = 0
+}
 
 module.exports = Util
