@@ -29,6 +29,8 @@ router.get("/logout", utilities.handleErrors(accountController.logoutUser))
 
 router.get(
   "/edit/:account_id",
+  regValidate.loginRules(),
+  regValidate.checkLoginData,
   utilities.handleErrors(accountController.buildAccountEdit)
 )
 router.post(

@@ -188,6 +188,7 @@ nav ul.open {
 }
 .details {
   border: 2px solid rgba(var(--accent));
+  padding: 10px;
 }
 .info-wrapper {
   padding: 1em;
